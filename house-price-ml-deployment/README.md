@@ -16,6 +16,14 @@ An end-to-end machine learning project that predicts house prices using an **XGB
 
 ---
 
+## ⚠️ Requirements
+
+* Python **3.10** (recommended)
+* pip
+* Virtual environment (venv)
+
+---
+
 ## 🧠 ML Pipeline
 
 ```
@@ -60,19 +68,51 @@ Web UI
 
 ## ▶️ Run Locally
 
-Install dependencies:
+### 1. Clone repository
 
-```bash
+```
+git clone https://github.com/<your-username>/house-price-ml-deployment.git
+cd house-price-ml-deployment
+```
+
+---
+
+### 2. Create virtual environment (Python 3.10)
+
+#### macOS / Linux
+
+```
+python3.10 -m venv venv
+source venv/bin/activate
+```
+
+#### Windows
+
+```
+py -3.10 -m venv venv
+venv\Scripts\activate
+```
+
+---
+
+### 3. Install dependencies
+
+```
+pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-Run the application:
+---
 
-```bash
+### 4. Run the application
+
+```
 python app/app.py
 ```
 
-Open in your browser:
+---
+
+### 5. Open in browser
 
 ```
 http://localhost:5000
@@ -84,13 +124,13 @@ http://localhost:5000
 
 Build the image:
 
-```bash
+```
 docker build -t house-price-ml .
 ```
 
 Run the container:
 
-```bash
+```
 docker run -p 5000:5000 house-price-ml
 ```
 
