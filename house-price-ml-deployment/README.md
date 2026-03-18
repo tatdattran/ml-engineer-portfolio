@@ -134,6 +134,12 @@ Run the container:
 docker run -p 5000:5000 house-price-ml
 ```
 
+Open in browser
+
+```
+http://localhost:5000
+```
+
 ---
 
 ## 📊 Model Details
