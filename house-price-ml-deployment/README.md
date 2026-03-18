@@ -71,7 +71,7 @@ Web UI
 ### 1. Clone repository
 
 ```
-git clone https://github.com/<your-username>/house-price-ml-deployment.git
+git clone https://github.com/tatdattran/house-price-ml-deployment.git
 cd house-price-ml-deployment
 ```
 
