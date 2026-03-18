@@ -142,6 +142,12 @@ http://localhost:5000
 
 ---
 
+
+## 📸 Demo UI
+
+![Demo UI](assets/demo_ui.png)
+
+
 ## 📊 Model Details
 
 * **Algorithm:** XGBoost Regressor
