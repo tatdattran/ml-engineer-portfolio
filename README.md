@@ -55,6 +55,11 @@ Each project is designed as a **self-contained machine learning pipeline**.
 * 🐳 Docker containerization
 * ☁️ Cloud deployment ready
 
+**📸 Demo UI**
+
+![Demo UI](house-price-ml-deployment/assets/demo_ui.png)
+
+
 ---
 
 ## 2. Customer Churn Prediction
