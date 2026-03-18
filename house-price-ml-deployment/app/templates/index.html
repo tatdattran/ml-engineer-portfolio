@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>House Price Predictor</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🏠 House Price Prediction System</h1>
+
+    <p>
+        Welcome to our House Price Prediction platform. This application estimates residential property prices 
+        based on key housing features using a machine learning model (XGBoost) trained on the 
+        <span class="highlight">Ames Housing Dataset from Kaggle</span>.
+    </p>
+
+    <p>
+        The model has been optimized to focus on the 9 <span class="highlight">most influential variables</span> 
+        affecting house prices, ensuring both accuracy and usability.
+    </p>
+
+    <h2>Required Inputs</h2>
+    <ul class="feature-list">
+        <li><span class="highlight">Overall Quality (OverallQual)</span>: Overall material and finish quality (scale 1–10)</li>
+        <li><span class="highlight">Living Area (GrLivArea)</span>: Above-ground living area in square feet (> 0, values in the trained data are between 334 and 5642)</li>
+        <li><span class="highlight">Full Bathrooms (FullBath)</span>: Number of full bathrooms (1,2,3)</li>
+        <li><span class="highlight">Garage Capacity (GarageCars)</span>: Number of cars the garage can hold (0,1,2,3,4)</li>
+        <li><span class="highlight">Garage Type (GarageType)</span>: Attchd (Attached), Detchd (Detached), BuiltIn (Built-in), CarPort, Basment, or 2Types</li>
+        <li><span class="highlight">Garage Quality (GarageQual)</span>: Ex (Excellent), Gd (Good), TA (Typical/Average), Fa (Fair), Po (Poor), NA (NA)</li>
+        <li><span class="highlight">Basement Quality (BsmtQual)</span>: Ex, Gd, TA, Fa, (Po, NA)</li>
+        <li><span class="highlight">Kitchen Quality (KitchenQual)</span>: Ex, Gd, TA, Fa, (Po, NA)</li>
+        <li><span class="highlight">Central Air (CentralAir)</span>: Y (Yes), N (No)</li>
+    </ul>
+
+  
+
+    <!-- ERROR SUMMARY -->
+    <div id="error-summary"></div>
+
+    <!-- LOADING -->
+    <div id="loading">⏳ Predicting...</div>
+
+    <form id="predictForm">
+
+        <!-- FullBath -->
+        <div class="form-group">
+            <label>Full Bathrooms (FullBath)</label>
+            <input type="number" name="FullBath">
+        </div>
+
+        <!-- GarageQual -->
+        <div class="form-group">
+            <label>Garage Quality (GarageQual)
+            </label>
+            <select name="GarageQual">
+                <option value="" disabled selected hidden>-- Select --</option>
+                <option>Ex</option>
+                <option>Gd</option>
+                <option>TA</option>
+                <option>Fa</option>
+                <option>Po</option>
+                <option>NA</option>
+            </select>
+            <div class="error-message">Please select Garage Quality</div>
+        </div>
+
+        <!-- CentralAir -->
+        <div class="form-group">
+            <label>Central Air (CentralAir)
+               
+            </label>
+            <select name="CentralAir">
+                <option value="" disabled selected hidden>-- Select --</option>
+                <option value="Y">Y</option>
+                <option value="N">N</option>
+            </select>
+            <div class="error-message">Please select Central Air</div>
+        </div>
+
+        <!-- BsmtQual -->
+        <div class="form-group">
+            <label>Basement Quality (BsmtQual)</label>
+            <select name="BsmtQual">
+                <option value="" disabled selected hidden>-- Select --</option>
+                <option>Ex</option>
+                <option>Gd</option>
+                <option>TA</option>
+                <option>Fa</option>
+                <option>Po</option>
+                <option>NA</option>
+            </select>
+            <div class="error-message">Please select Basement Quality</div>
+        </div>
+
+        <!-- OverallQual -->
+        <div class="form-group">
+            <label>Overall Quality (OverallQual) – scale 1–10</label>
+            <input type="number" name="OverallQual">
+        </div>
+
+        <!-- GarageCars -->
+        <div class="form-group">
+            <label>Garage Capacity (GarageCars)</label>
+            <input type="number" name="GarageCars">
+        </div>
+
+        <!-- GrLivArea -->
+        <div class="form-group">
+            <label>Living Area (GrLivArea – sqft)</label>
+            <input type="number" name="GrLivArea">
+        </div>
+
+        <!-- KitchenQual -->
+        <div class="form-group">
+            <label>Kitchen Quality (KitchenQual)</label>
+            <select name="KitchenQual">
+                <option value="" disabled selected hidden>-- Select --</option>
+                <option>Ex</option>
+                <option>Gd</option>
+                <option>TA</option>
+                <option>Fa</option>
+                <option>Po</option>
+                <option>NA</option>
+            </select>
+            <div class="error-message">Please select Kitchen Quality</div>
+        </div>
+
+        <!-- GarageType -->
+        <div class="form-group">
+            <label>Garage Type (GarageType)</label>
+            <select name="GarageType">
+                <option value="" disabled selected hidden>-- Select --</option>
+                <option>Attchd</option>
+                <option>Detchd</option>
+                <option>BuiltIn</option>
+                <option>CarPort</option>
+                <option>Basment</option>
+                <option>2Types</option>
+            </select>
+            <div class="error-message">Please select Garage Type</div>
+        </div>
+
+        <button type="submit">Predict the house price</button>
+
+    </form>
+
+    <h3 id="result"></h3>
+  <div class="note">
+        ⚠️ <strong>Note:</strong> The prediction is an <em>estimated value</em>, not an exact market price. 
+        Results depend on the quality and distribution of the training data.
+    </div>
+</div>
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>
