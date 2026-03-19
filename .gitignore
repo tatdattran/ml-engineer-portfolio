@@ -5,8 +5,5 @@ __pycache__/
 .env
 
 .DS_Store
-
-venv/
-ml-portfolio/
-
+**/.DS_Store
 *.log
