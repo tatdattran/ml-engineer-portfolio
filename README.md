@@ -57,7 +57,7 @@ Each project is designed as a **self-contained machine learning pipeline**.
 
 **📸 Demo UI**
 
-![Demo UI](house-price-ml-deployment/assets/demo_ui.png)
+![Demo UI](01_house_price_ml_deployment/assets/demo_ui.png)
 
 
 ---
