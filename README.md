@@ -128,26 +128,25 @@ Classify text sentiment from product or movie reviews.
 
 ---
 
-## 5. Object Detection
+## 5. YOLO Object Detection API (FastAPI + YOLOv8)
 
-**Goal**
+A production-ready REST API for object detection using **YOLOv8 (Ultralytics)** and **FastAPI**.
+This project follows clean architecture principles and is fully containerized with Docker — suitable for development, deployment, and portfolio demonstration.
 
-Detect objects in images using deep learning.
+---
 
-**Framework**
 
-YOLO object detection.
+### ✨ Features
 
-**Libraries**
-
-* ultralytics
-* opencv
-
-**Tasks**
-
-* training
-* inference
-* visualization
+* ⚡ FastAPI high-performance backend
+* 🎯 YOLOv8 object detection (Ultralytics)
+* 🖼️ Upload image → get annotated image with bounding boxes
+* 📊 JSON output with detection results
+* 🧪 Unit testing with pytest
+* 🧹 Linting with Ruff
+* 🐳 Docker & docker-compose support
+* ⚙️ Environment-based configuration
+* 🧱 Clean architecture (API / Services / Core / Schemas)
 
 ---
 
