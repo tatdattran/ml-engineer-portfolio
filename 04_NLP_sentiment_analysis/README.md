@@ -124,13 +124,15 @@ Open:
 
 👉 http://127.0.0.1:8000/
 
-![Demo UI](assets/demo_ui_4.png)
-
 ### Usage
 
 1. Enter a sentence
 2. Click **Analyze Sentiment**
 3. View result (positive/negative + score)
+
+
+![Demo UI](assets/demo_ui_4.png)
+
 
 ---
 
@@ -247,7 +249,7 @@ distilbert-base-uncased-finetuned-sst-2-english
 
 # 👨‍💻 Author
 
-**Your Name**
+**Dr. Tat Dat Tran**
 
 GitHub: https://github.com/tatdattran
 
