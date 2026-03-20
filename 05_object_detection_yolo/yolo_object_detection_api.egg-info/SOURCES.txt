@@ -1,0 +1,15 @@
+README.md
+pyproject.toml
+app/main.py
+app/api/routes.py
+app/core/config.py
+app/core/logging.py
+app/schemas/response.py
+app/services/detector.py
+tests/test_health.py
+tests/test_predict_schema.py
+yolo_object_detection_api.egg-info/PKG-INFO
+yolo_object_detection_api.egg-info/SOURCES.txt
+yolo_object_detection_api.egg-info/dependency_links.txt
+yolo_object_detection_api.egg-info/requires.txt
+yolo_object_detection_api.egg-info/top_level.txt

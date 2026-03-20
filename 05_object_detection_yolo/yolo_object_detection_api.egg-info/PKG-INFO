@@ -1,0 +1,221 @@
+Metadata-Version: 2.4
+Name: yolo-object-detection-api
+Version: 0.1.0
+Summary: Production-ready YOLO object detection API with FastAPI
+Author: OpenAI Assistant
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: fastapi>=0.115.0
+Requires-Dist: uvicorn[standard]>=0.30.0
+Requires-Dist: python-multipart>=0.0.9
+Requires-Dist: pydantic-settings>=2.4.0
+Requires-Dist: ultralytics>=8.3.0
+Requires-Dist: opencv-python-headless>=4.10.0.84
+Requires-Dist: numpy>=1.26.0
+Requires-Dist: Pillow>=10.4.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.3.0; extra == "dev"
+Requires-Dist: httpx>=0.27.0; extra == "dev"
+Requires-Dist: ruff>=0.6.0; extra == "dev"
+
+# 03_Yolo_object_detection
+
+Production-ready YOLO object detection API built with **FastAPI**, **Ultralytics YOLO**, **Docker**, **pytest**, and **GitHub Actions**.
+
+This repository is designed to be clean enough for GitHub, easy to run locally, and straightforward to deploy to a VM, container platform, or Kubernetes.
+
+## Features
+
+- FastAPI REST API for object detection
+- Health check and readiness endpoints
+- Image upload inference endpoint
+- Config via environment variables
+- Structured logging
+- Docker + docker-compose support
+- Unit tests with pytest
+- Linting and formatting with Ruff
+- GitHub Actions CI
+- Easy swap between pretrained and custom YOLO weights
+
+## Tech stack
+
+- Python 3.11
+- FastAPI
+- Uvicorn
+- Ultralytics
+- OpenCV
+- Pillow
+- Pydantic Settings
+- pytest
+- Ruff
+
+## Project structure
+
+```text
+03_Yolo_object_detection/
+├── app/
+│   ├── api/
+│   │   └── routes.py
+│   ├── core/
+│   │   ├── config.py
+│   │   └── logging.py
+│   ├── schemas/
+│   │   └── response.py
+│   ├── services/
+│   │   └── detector.py
+│   └── main.py
+├── scripts/
+│   └── download_sample_model.sh
+├── tests/
+│   ├── test_health.py
+│   └── test_predict_schema.py
+├── .dockerignore
+├── .env.example
+├── .gitignore
+├── docker-compose.yml
+├── Dockerfile
+├── Makefile
+├── pyproject.toml
+└── README.md
+```
+
+## Quick start
+
+### 1) Clone and enter the project
+
+```bash
+git clone <your-repo-url>
+cd 03_Yolo_object_detection
+```
+
+### 2) Create virtual environment
+
+```bash
+python -m venv .venv
+source .venv/bin/activate        # Linux/macOS
+# .venv\Scripts\activate         # Windows PowerShell
+```
+
+### 3) Install dependencies
+
+```bash
+pip install -U pip
+pip install -e .[dev]
+```
+
+### 4) Configure environment
+
+```bash
+cp .env.example .env
+```
+
+Default model:
+
+```env
+MODEL_PATH=yolov8n.pt
+```
+
+You can replace this with your own trained weights later, for example:
+
+```env
+MODEL_PATH=models/best.pt
+```
+
+### 5) Run the API
+
+```bash
+make run
+```
+
+Open:
+
+- Swagger UI: `http://127.0.0.1:8000/docs`
+- Health: `http://127.0.0.1:8000/health`
+
+## API endpoints
+
+### `GET /health`
+Returns service status.
+
+### `GET /ready`
+Checks whether the model is loaded.
+
+### `POST /predict`
+Detect objects from an uploaded image.
+
+Example with curl:
+
+```bash
+curl -X POST "http://127.0.0.1:8000/predict" \
+  -H "accept: application/json" \
+  -H "Content-Type: multipart/form-data" \
+  -F "file=@sample.jpg"
+```
+
+Example response:
+
+```json
+{
+  "image_width": 1280,
+  "image_height": 720,
+  "model": "yolov8n.pt",
+  "detections": [
+    {
+      "class_id": 0,
+      "class_name": "person",
+      "confidence": 0.91,
+      "bbox_xyxy": [110.2, 90.4, 320.8, 700.5]
+    }
+  ],
+  "count": 1
+}
+```
+
+## Run tests
+
+```bash
+make test
+```
+
+## Lint and format
+
+```bash
+make lint
+make format
+```
+
+## Run with Docker
+
+```bash
+docker compose up --build
+```
+
+## Production notes
+
+- Keep model weights outside Git if the file is large.
+- For production, mount weights as a volume or download them during deployment.
+- Add reverse proxy and HTTPS in front of FastAPI for internet-facing deployments.
+- For higher throughput, consider exported ONNX or TensorRT models depending on hardware.
+- Store large artifacts with Git LFS if you must version them.
+
+## GitHub setup checklist
+
+- Create a new GitHub repository
+- Push this code
+- Add repository secrets if your deploy pipeline needs them
+- Enable Actions
+- Optionally add branch protection for `main`
+
+## Helpful commands
+
+```bash
+make install
+make run
+make test
+make lint
+make format
+```
+
+## References
+
+Ultralytics documents YOLO installation and Python usage through the `ultralytics` package, and FastAPI documents container-based deployment patterns for production APIs. citeturn423066search0turn423066search2turn423066search1turn423066search5

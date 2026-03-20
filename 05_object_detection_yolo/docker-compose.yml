@@ -1,0 +1,10 @@
+services:
+  yolo-api:
+    build: .
+    container_name: yolo-object-detection-api
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/app/models
