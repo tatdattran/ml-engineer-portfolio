@@ -151,7 +151,7 @@ This project follows clean architecture principles and is fully containerized wi
 
 ### Demo UI:
 
-![Demo UI](assets/demo_ui_5_5.jpg)
+![Demo UI](05_object_detection_yolo/assets/demo_ui_5_5.jpg)
 ---
 
 ## 6. ML API Deployment
