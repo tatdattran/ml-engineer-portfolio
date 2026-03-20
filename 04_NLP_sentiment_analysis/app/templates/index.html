@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sentiment Analysis Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 760px;
+      margin: 40px auto;
+      padding: 0 16px;
+      line-height: 1.6;
+    }
+
+    h1 {
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #555;
+      margin-bottom: 24px;
+    }
+
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      box-sizing: border-box;
+      resize: vertical;
+    }
+
+    button {
+      margin-top: 16px;
+      padding: 12px 18px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 24px;
+      padding: 16px;
+      border-radius: 10px;
+      background: #f7f7f7;
+      border: 1px solid #e5e5e5;
+      display: none;
+    }
+
+    .label {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .positive {
+      color: #0a7a2f;
+    }
+
+    .negative {
+      color: #b42318;
+    }
+
+    .muted {
+      color: #666;
+    }
+
+    .error {
+      margin-top: 16px;
+      color: #b42318;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sentiment Analysis Demo</h1>
+  <p class="subtitle">
+    Enter a sentence below to evaluate whether it is positive or negative.
+  </p>
+
+  <div class="card">
+    <label for="text"><strong>Input text</strong></label>
+    <textarea id="text" placeholder="Example: I really enjoyed this product."></textarea>
+
+    <button onclick="predictSentiment()">Analyze Sentiment</button>
+
+    <div id="error" class="error"></div>
+
+    <div id="result" class="result">
+      <div id="resultLabel" class="label"></div>
+      <div id="resultText"></div>
+      <div id="resultScore" class="muted" style="margin-top: 8px;"></div>
+    </div>
+  </div>
+
+  <script>
+    async function predictSentiment() {
+      const text = document.getElementById("text").value.trim();
+      const errorBox = document.getElementById("error");
+      const resultBox = document.getElementById("result");
+      const resultLabel = document.getElementById("resultLabel");
+      const resultText = document.getElementById("resultText");
+      const resultScore = document.getElementById("resultScore");
+
+      errorBox.style.display = "none";
+      resultBox.style.display = "none";
+      errorBox.textContent = "";
+
+      if (!text) {
+        errorBox.textContent = "Please enter a sentence before submitting.";
+        errorBox.style.display = "block";
+        return;
+      }
+
+      try {
+        const response = await fetch("/predict", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ text })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.detail || "Prediction failed.");
+        }
+
+        const sentiment = (data.sentiment || data.label || "").toLowerCase();
+        const score = data.score ?? "";
+        const message = data.result || data.message || `The sentence "${text}" is ${sentiment}.`;
+
+        resultLabel.textContent = sentiment === "positive" ? "Positive" : "Negative";
+        resultLabel.className = sentiment === "positive" ? "label positive" : "label negative";
+        resultText.textContent = message;
+        resultScore.textContent = score !== "" ? `Confidence score: ${score}` : "";
+
+        resultBox.style.display = "block";
+      } catch (error) {
+        errorBox.textContent = error.message || "Something went wrong.";
+        errorBox.style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>

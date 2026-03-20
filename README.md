@@ -108,25 +108,36 @@ Build a recommendation engine for users based on past interactions.
 
 ## 4. NLP Sentiment Analysis
 
-**Goal**
 
-Classify text sentiment from product or movie reviews.
+This project provides a **REST API for sentiment analysis** using a pre-trained Transformer model.
 
-**Approaches**
+👉 It also includes a **lightweight web UI** for easy interaction and demo.
 
-* Transformer-based NLP
-* Fine-tuning pre-trained models
+Perfect for:
 
-**Libraries**
-
-* transformers
-* datasets
-
-**Model**
-
-* BERT
+* AI backend services
+* NLP applications
+* portfolio demonstration
 
 ---
+
+## ✨ Features
+
+* ⚡ FastAPI backend
+* 🧠 Transformer-based sentiment analysis (Hugging Face)
+* 🖥️ Minimal UI demo (no frontend framework needed)
+* 📊 JSON API output
+* 🐳 Docker support
+* 🧪 Testing & linting ready
+* ⚙️ Configurable via `.env`
+
+---
+
+### Demo UI:
+
+![Demo UI](04_NLP_sentiment_analysis/assets/demo_ui_4.png)
+
+
 
 ## 5. YOLO Object Detection API (FastAPI + YOLOv8)
 
