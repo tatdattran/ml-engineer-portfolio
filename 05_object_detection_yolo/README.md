@@ -123,15 +123,15 @@ Checks whether the model is loaded.
 Detect objects from an uploaded image.
 
 * Go to `POST/predict`
-![Demo UI 5.1](assets/demo_ui_5_1.png)
+![Demo UI 5.1](assets/demo_ui_5_1.jpg)
 * Try it out
-![Demo UI 5.2](assets/demo_ui_5_2.png)
+![Demo UI 5.2](assets/demo_ui_5_2.jpg)
 * Upload an image
-![Demo UI 5.3](assets/demo_ui_5_3.png)
+![Demo UI 5.3](assets/demo_ui_5_3.jpg)
 * Click **Execute**
-![Demo UI 5.4](assets/demo_ui_5_4.png)
+![Demo UI 5.4](assets/demo_ui_5_4.jpg)
 * View the result image with bounding boxes
-![Demo UI 5.5](assets/demo_ui_5_5.png)
+![Demo UI 5.5](assets/demo_ui_5_5.jpg)
 
 
 ## Run tests
