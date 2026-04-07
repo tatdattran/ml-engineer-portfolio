@@ -183,4 +183,12 @@ This project follows clean architecture principles and is fully containerized wi
 ---
 
 
+# 👨‍💻 Author
 
+**Dr. Tat Dat Tran**
+
+GitHub: https://github.com/tatdattran
+
+---
+
+# ⭐ Star this repo if you find it useful!
