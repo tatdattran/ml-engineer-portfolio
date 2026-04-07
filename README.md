@@ -91,18 +91,33 @@ Predict whether a telecom customer will churn.
 
 **Goal**
 
-Build a recommendation engine for users based on past interactions.
+This project is a portfolio-ready **e-commerce recommendation system** built with **FastAPI**, **scikit-learn**, and a lightweight web UI.
 
-**Approaches**
+It simulates a real-world recommendation workflow for an online retail platform by combining multiple recommendation signals:
 
-* Collaborative filtering
-* Matrix factorization
+- content similarity from product metadata
+- category and brand affinity
+- price similarity
+- popularity score
+- collaborative-style co-occurrence from user interactions
 
-**Libraries**
+Instead of a toy movie demo, this version uses a more realistic **Amazon-style product catalog** and interaction dataset.
 
-* implicit
-* pandas
-* numpy
+## This repository demonstrates:
+
+- recommendation system fundamentals
+- multi-signal ranking design
+- API serving with FastAPI
+- model artifact generation and loading
+- product-oriented ML system thinking
+- Dockerization
+- clean project structure
+- demo UI design for explainability
+
+
+![Demo UI](03_recommendation_system/assets/RecommendationSystem.png)
+
+
 
 ---
 

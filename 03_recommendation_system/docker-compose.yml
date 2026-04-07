@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  recommender-api:
+    build: .
+    container_name: recommender-api
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./artifacts:/app/artifacts
+      - ./data:/app/data

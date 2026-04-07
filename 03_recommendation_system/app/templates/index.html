@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ app_name }}</title>
+  <style>
+    :root {
+      --bg: #eef2f7;
+      --header-bg: #dfe7f3;
+      --panel: #ffffff;
+      --border: #d9dee8;
+      --text: #20304a;
+      --muted: #66758f;
+      --primary: #3f72b5;
+      --primary-dark: #315f97;
+      --star: #f3b426;
+      --shadow: 0 8px 20px rgba(40, 62, 96, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); }
+    .topbar { background: var(--header-bg); padding: 26px 20px 24px; text-align: center; border-bottom: 1px solid rgba(0,0,0,0.04); }
+    .topbar h1 { margin: 0; font-size: 33px; line-height: 1.2; color: #2f5b95; letter-spacing: -0.02em; font-weight: 800; }
+    .container { max-width: 1380px; margin: 0 auto; padding: 24px 24px 56px; }
+    .controls { display: grid; grid-template-columns: 260px 300px 220px; gap: 18px; align-items: end; justify-content: center; margin-bottom: 18px; }
+    .field-group label { display: block; margin-bottom: 8px; font-size: 14px; font-weight: 600; color: #26344d; }
+    input, select { width: 100%; height: 46px; border: 1px solid #cfd6e3; border-radius: 8px; padding: 0 14px; font-size: 16px; background: #fff; color: #23324c; outline: none; box-shadow: inset 0 1px 0 rgba(0,0,0,0.02); }
+    .button-row { display: flex; gap: 12px; justify-content: center; margin-bottom: 18px; }
+    button { min-width: 250px; height: 46px; border: none; border-radius: 8px; background: var(--primary); color: white; font-size: 16px; font-weight: 600; cursor: pointer; box-shadow: var(--shadow); transition: transform 0.15s ease, background 0.15s ease; }
+    button:hover { transform: translateY(-1px); background: var(--primary-dark); }
+    .secondary-btn { background: #5f88bf; min-width: 210px; }
+    .divider { height: 1px; background: #d7dde8; margin: 0 0 22px; }
+    .main-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 28px; align-items: start; }
+    .section-title { margin: 0 0 18px; font-size: 21px; line-height: 1.2; color: #1f2f48; font-weight: 800; }
+    .products-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .product-card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; box-shadow: var(--shadow); padding: 12px 12px 10px; min-height: 370px; display: flex; flex-direction: column; }
+    .product-image { width: 100%; height: 170px; border-radius: 8px; overflow: hidden; border: 1px solid #e6ebf2; margin-bottom: 12px; background: #f8fbff; display: flex; align-items: center; justify-content: center; }
+    .product-image svg, .thumb svg { width: 100%; height: 100%; display: block; }
+    .product-title { font-size: 14px; font-weight: 800; line-height: 1.35; margin-bottom: 8px; color: #21314b; min-height: 40px; }
+    .rating-line { display: flex; align-items: center; gap: 6px; color: #4c5d79; font-size: 14px; margin-bottom: 8px; }
+    .stars { color: var(--star); font-size: 17px; letter-spacing: 1px; line-height: 1; }
+    .meta { font-size: 13px; color: var(--muted); margin-bottom: 4px; line-height: 1.45; }
+    .price { color: #23324c; font-size: 20px; font-weight: 800; margin: 8px 0 8px; }
+    .score-badges { display: flex; flex-wrap: wrap; gap: 6px; margin: 2px 0 12px; }
+    .score-badge { font-size: 11px; color: #4e6285; background: #f1f5fb; border: 1px solid #dbe3ef; border-radius: 999px; padding: 4px 8px; }
+    .card-button { margin-top: auto; width: 100%; min-width: unset; height: 40px; border-radius: 8px; font-size: 15px; background: #4777b7; }
+    .sidebar { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; box-shadow: var(--shadow); overflow: hidden; }
+    .sidebar-header { padding: 18px 20px; font-size: 18px; font-weight: 800; border-bottom: 1px solid var(--border); color: #21314b; background: #fbfcfe; }
+    .catalog-item { display: grid; grid-template-columns: 66px 1fr; gap: 14px; padding: 14px 16px; border-bottom: 1px solid var(--border); cursor: pointer; transition: background 0.15s ease; }
+    .catalog-item:hover { background: #f8fbff; }
+    .catalog-item:last-child { border-bottom: none; }
+    .thumb { width: 66px; height: 66px; border-radius: 8px; border: 1px solid #e3e8f0; overflow: hidden; background: #f8fbff; display: flex; align-items: center; justify-content: center; }
+    .catalog-title { font-size: 14px; font-weight: 800; color: #2360b3; line-height: 1.3; margin-bottom: 4px; }
+    .catalog-sub { font-size: 13px; color: #51627e; line-height: 1.35; }
+    .catalog-stars { color: var(--star); font-size: 15px; margin-right: 6px; }
+    .query-box { background: #f6f9fd; border: 1px solid #dde5f0; border-radius: 10px; padding: 12px 14px; margin-bottom: 16px; color: #4b5d79; font-size: 14px; display: none; }
+    .error-box, .loading-box { display: none; margin: 0 auto 16px; max-width: 680px; border-radius: 10px; padding: 12px 14px; font-size: 14px; }
+    .error-box { background: #fff0f1; color: #b42318; border: 1px solid #f2c7cc; }
+    .loading-box { background: #eef5ff; color: #375d96; border: 1px solid #d1def3; text-align: center; }
+    .empty-state { background: var(--panel); border: 1px dashed #cfd7e4; border-radius: 10px; padding: 28px 20px; color: #6d7d97; text-align: center; box-shadow: var(--shadow); }
+    .footer-note { margin-top: 16px; font-size: 13px; color: #6b7a94; text-align: center; }
+    @media (max-width: 1180px) { .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .controls { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 900px) { .main-layout { grid-template-columns: 1fr; } }
+    @media (max-width: 720px) { .controls { grid-template-columns: 1fr; } .button-row { flex-direction: column; } button { width: 100%; min-width: unset; } .products-grid { grid-template-columns: 1fr; } .topbar h1 { font-size: 28px; } }
+  </style>
+</head>
+<body>
+  <div class="topbar"><h1>{{ app_name }}</h1></div>
+  <div class="container">
+    <div class="controls">
+      <div class="field-group">
+        <label for="productId">Product ID:</label>
+        <input id="productId" type="number" placeholder="101" />
+      </div>
+      <div class="field-group">
+        <label for="topK">Top K Recommendations:</label>
+        <select id="topK">
+          <option value="4">4</option>
+          <option value="6" selected>6</option>
+          <option value="8">8</option>
+        </select>
+      </div>
+      <div class="field-group">
+        <label for="viewMode">Mode:</label>
+        <select id="viewMode">
+          <option value="recommend" selected>Similar Products</option>
+          <option value="trending">Trending Products</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="button-row">
+      <button onclick="handlePrimaryAction()">Get Recommendations</button>
+      <button class="secondary-btn" onclick="loadTrending()">Show Trending Products</button>
+    </div>
+
+    <div class="loading-box" id="loadingBox">Loading results...</div>
+    <div class="error-box" id="errorBox"></div>
+
+    <div class="divider"></div>
+
+    <div class="main-layout">
+      <div>
+        <h2 class="section-title" id="resultsTitle">Recommended Products</h2>
+        <div class="query-box" id="queryBox"></div>
+        <div class="products-grid" id="resultsGrid"></div>
+        <div class="empty-state" id="emptyState">
+          Enter a Product ID from the catalog and click <strong>Get Recommendations</strong> to view related products.
+        </div>
+        <div class="footer-note">Tip: click any product in the catalog to auto-fill the Product ID field.</div>
+      </div>
+
+      <aside class="sidebar">
+        <div class="sidebar-header">Product Catalog</div>
+        <div id="catalogList"></div>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    function getStars(rating) {
+      const full = Math.round(Number(rating));
+      return "★".repeat(full) + "☆".repeat(Math.max(0, 5 - full));
+    }
+
+    function getProductTheme(title, category, brand) {
+      const key = `${title} ${category} ${brand}`.toLowerCase();
+      if (key.includes("headphone")) return { bg1:"#f5f7fb", bg2:"#e6ecf7", icon:"#202a3b", type:"headphones" };
+      if (key.includes("earbud")) return { bg1:"#f6f8fb", bg2:"#ebeff7", icon:"#1f2430", type:"earbuds" };
+      if (key.includes("speaker")) return { bg1:"#f4f6fa", bg2:"#e8edf5", icon:"#2e3442", type:"speaker" };
+      if (key.includes("watch")) return { bg1:"#f6f7fb", bg2:"#e9edf6", icon:"#202733", type:"watch" };
+      if (key.includes("shoe")) return { bg1:"#f5f7fb", bg2:"#e7edf8", icon:"#3b5a84", type:"shoe" };
+      if (key.includes("camera")) return { bg1:"#f7f8fb", bg2:"#eaeff7", icon:"#2d3442", type:"camera" };
+      if (key.includes("vacuum")) return { bg1:"#f7f8fb", bg2:"#ebf0f7", icon:"#444d60", type:"vacuum" };
+      if (key.includes("bottle")) return { bg1:"#f6fbfb", bg2:"#e8f4f6", icon:"#3b6471", type:"bottle" };
+      if (key.includes("backpack")) return { bg1:"#f8f7fb", bg2:"#edeaf5", icon:"#394052", type:"backpack" };
+      if (key.includes("moisturizer") || key.includes("serum")) return { bg1:"#fef7fb", bg2:"#f7e9f2", icon:"#b76b92", type:"beauty" };
+      if (key.includes("air fryer") || key.includes("cookware")) return { bg1:"#fbfaf7", bg2:"#f1ece2", icon:"#76634d", type:"kitchen" };
+      if (key.includes("jacket")) return { bg1:"#f5f8fb", bg2:"#e8eef6", icon:"#54637a", type:"jacket" };
+      if (key.includes("keyboard")) return { bg1:"#f7f8fb", bg2:"#eceff6", icon:"#2c3446", type:"keyboard" };
+      return { bg1:"#f7f9fc", bg2:"#e8edf5", icon:"#5c6f8f", type:"generic" };
+    }
+
+    function svgForType(type, iconColor, bg1, bg2) {
+      const svgs = {
+        headphones: `<svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="${bg1}"/><stop offset="1" stop-color="${bg2}"/></linearGradient></defs><rect width="320" height="200" fill="url(#g)"/><ellipse cx="160" cy="176" rx="92" ry="12" fill="#dfe6f1"/><path d="M102 105c0-42 26-74 58-74s58 32 58 74" fill="none" stroke="${iconColor}" stroke-width="18" stroke-linecap="round"/><rect x="68" y="95" width="46" height="70" rx="22" fill="${iconColor}"/><rect x="206" y="95" width="46" height="70" rx="22" fill="${iconColor}"/></svg>`,
+        earbuds: `<svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="${bg1}"/><stop offset="1" stop-color="${bg2}"/></linearGradient></defs><rect width="320" height="200" fill="url(#g)"/><ellipse cx="160" cy="176" rx="82" ry="12" fill="#dfe6f1"/><rect x="108" y="90" width="104" height="58" rx="20" fill="${iconColor}"/><rect x="116" y="62" width="26" height="52" rx="13" fill="${iconColor}"/><rect x="178" y="62" width="26" height="52" rx="13" fill="${iconColor}"/><circle cx="129" cy="65" r="16" fill="${iconColor}"/><circle cx="191" cy="65" r="16" fill="${iconColor}"/></svg>`,
+        speaker: `<svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="${bg1}"/><stop offset="1" stop-color="${bg2}"/></linearGradient></defs><rect width="320" height="200" fill="url(#g)"/><ellipse cx="160" cy="176" rx="100" ry="11" fill="#dfe6f1"/><rect x="72" y="72" width="176" height="64" rx="18" fill="${iconColor}"/><rect x="92" y="84" width="136" height="40" rx="10" fill="#414b5b"/></svg>`,
+        watch: `<svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="${bg1}"/><stop offset="1" stop-color="${bg2}"/></linearGradient></defs><rect width="320" height="200" fill="url(#g)"/><ellipse cx="160" cy="178" rx="70" ry="10" fill="#dfe6f1"/><path d="M144 28h32l-6 34h-20z" fill="${iconColor}"/><path d="M144 172h32l-6-34h-20z" fill="${iconColor}"/><rect x="118" y="54" width="84" height="92" rx="24" fill="${iconColor}"/><rect x="132" y="68" width="56" height="64" rx="12" fill="#2c3342"/><circle cx="160" cy="100" r="14" fill="#4dd0b3"/></svg>`,
+        shoe: `<svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="${bg1}"/><stop offset="1" stop-color="${bg2}"/></linearGradient></defs><rect width="320" height="200" fill="url(#g)"/><ellipse cx="160" cy="176" rx="110" ry="11" fill="#dfe6f1"/><path d="M74 124c32-8 44-22 68-50 10 18 22 26 46 30 26 4 42 18 54 34v12H74z" fill="${iconColor}"/><rect x="76" y="136" width="170" height="14" rx="7" fill="#2f4d77"/></svg>`,
+        camera: `<svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="${bg1}"/><stop offset="1" stop-color="${bg2}"/></linearGradient></defs><rect width="320" height="200" fill="url(#g)"/><ellipse cx="160" cy="176" rx="88" ry="11" fill="#dfe6f1"/><rect x="86" y="78" width="148" height="78" rx="16" fill="${iconColor}"/><rect x="112" y="62" width="34" height="20" rx="6" fill="${iconColor}"/><circle cx="160" cy="118" r="28" fill="#4a5567"/><circle cx="160" cy="118" r="16" fill="#9fb1c8"/></svg>`,
+        bottle: `<svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="${bg1}"/><stop offset="1" stop-color="${bg2}"/></linearGradient></defs><rect width="320" height="200" fill="url(#g)"/><ellipse cx="160" cy="176" rx="44" ry="10" fill="#dfe6f1"/><rect x="146" y="42" width="28" height="22" rx="6" fill="${iconColor}"/><rect x="126" y="58" width="68" height="94" rx="24" fill="${iconColor}"/></svg>`,
+        backpack: `<svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="${bg1}"/><stop offset="1" stop-color="${bg2}"/></linearGradient></defs><rect width="320" height="200" fill="url(#g)"/><ellipse cx="160" cy="176" rx="70" ry="10" fill="#dfe6f1"/><path d="M120 64c0-22 18-34 40-34s40 12 40 34" fill="none" stroke="${iconColor}" stroke-width="10"/><rect x="102" y="64" width="116" height="98" rx="26" fill="${iconColor}"/><rect x="126" y="96" width="68" height="30" rx="10" fill="#4e5968"/></svg>`,
+        beauty: `<svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="${bg1}"/><stop offset="1" stop-color="${bg2}"/></linearGradient></defs><rect width="320" height="200" fill="url(#g)"/><ellipse cx="160" cy="176" rx="56" ry="10" fill="#efe2ea"/><rect x="136" y="44" width="48" height="24" rx="6" fill="${iconColor}"/><rect x="124" y="64" width="72" height="94" rx="20" fill="${iconColor}"/></svg>`,
+        kitchen: `<svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="${bg1}"/><stop offset="1" stop-color="${bg2}"/></linearGradient></defs><rect width="320" height="200" fill="url(#g)"/><ellipse cx="160" cy="176" rx="78" ry="10" fill="#e9e3d7"/><rect x="108" y="52" width="104" height="108" rx="18" fill="${iconColor}"/><rect x="130" y="68" width="60" height="54" rx="10" fill="#8f7a60"/></svg>`,
+        jacket: `<svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="${bg1}"/><stop offset="1" stop-color="${bg2}"/></linearGradient></defs><rect width="320" height="200" fill="url(#g)"/><ellipse cx="160" cy="176" rx="70" ry="10" fill="#dfe6f1"/><path d="M118 58l24-20h36l24 20 20 88H98z" fill="${iconColor}"/><rect x="150" y="58" width="20" height="96" fill="#6a778e"/></svg>`,
+        keyboard: `<svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="${bg1}"/><stop offset="1" stop-color="${bg2}"/></linearGradient></defs><rect width="320" height="200" fill="url(#g)"/><ellipse cx="160" cy="176" rx="104" ry="10" fill="#dfe6f1"/><rect x="72" y="86" width="176" height="54" rx="12" fill="${iconColor}"/><g fill="#606d83"><rect x="86" y="96" width="18" height="10" rx="2"/><rect x="108" y="96" width="18" height="10" rx="2"/><rect x="130" y="96" width="18" height="10" rx="2"/><rect x="152" y="96" width="18" height="10" rx="2"/><rect x="174" y="96" width="18" height="10" rx="2"/><rect x="196" y="96" width="18" height="10" rx="2"/><rect x="218" y="96" width="18" height="10" rx="2"/><rect x="96" y="110" width="120" height="10" rx="2"/></g></svg>`,
+        generic: `<svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop stop-color="${bg1}"/><stop offset="1" stop-color="${bg2}"/></linearGradient></defs><rect width="320" height="200" fill="url(#g)"/><ellipse cx="160" cy="176" rx="72" ry="10" fill="#dfe6f1"/><rect x="110" y="60" width="100" height="96" rx="20" fill="${iconColor}"/></svg>`
+      };
+      return svgs[type] || svgs.generic;
+    }
+
+    function renderArtwork(title, category, brand) {
+      const theme = getProductTheme(title, category, brand);
+      return svgForType(theme.type, theme.icon, theme.bg1, theme.bg2);
+    }
+
+    function renderRecommendationCard(item) {
+      const badges = [];
+      if (item.final_score !== undefined) badges.push(`<span class="score-badge">Final: ${item.final_score}</span>`);
+      if (item.content_score !== undefined) badges.push(`<span class="score-badge">Content: ${item.content_score}</span>`);
+      if (item.collaborative_score !== undefined) badges.push(`<span class="score-badge">Collaborative: ${item.collaborative_score}</span>`);
+      if (item.popularity_score !== undefined) badges.push(`<span class="score-badge">Popularity: ${item.popularity_score}</span>`);
+      return `
+        <div class="product-card">
+          <div class="product-image">${renderArtwork(item.title, item.category, item.brand)}</div>
+          <div class="product-title">${item.title}</div>
+          <div class="rating-line"><span class="stars">${getStars(item.rating)}</span><span>${Number(item.rating).toFixed(1)}</span></div>
+          <div class="meta">${item.category} • ${item.brand}</div>
+          <div class="meta">Product ID: ${item.product_id}</div>
+          <div class="price">$${Number(item.price).toFixed(2)}</div>
+          <div class="score-badges">${badges.join("")}</div>
+          <button class="card-button" onclick="selectProduct(${item.product_id})">Add to Cart</button>
+        </div>
+      `;
+    }
+
+    function selectProduct(productId) { document.getElementById("productId").value = productId; window.scrollTo({ top: 0, behavior: "smooth" }); }
+    function setLoading(isLoading) { document.getElementById("loadingBox").style.display = isLoading ? "block" : "none"; }
+    function setError(message = "") {
+      const box = document.getElementById("errorBox");
+      if (message) { box.textContent = message; box.style.display = "block"; }
+      else { box.textContent = ""; box.style.display = "none"; }
+    }
+    function setQueryBox(html = "") {
+      const box = document.getElementById("queryBox");
+      if (html) { box.innerHTML = html; box.style.display = "block"; }
+      else { box.innerHTML = ""; box.style.display = "none"; }
+    }
+    function renderGrid(items, title) {
+      const grid = document.getElementById("resultsGrid");
+      const empty = document.getElementById("emptyState");
+      document.getElementById("resultsTitle").textContent = title;
+      if (!items || items.length === 0) { grid.innerHTML = ""; empty.style.display = "block"; return; }
+      empty.style.display = "none";
+      grid.innerHTML = items.map(renderRecommendationCard).join("");
+    }
+
+    async function loadCatalog() {
+      const list = document.getElementById("catalogList");
+      list.innerHTML = `<div class="catalog-item"><div class="catalog-sub">Loading catalog...</div></div>`;
+      try {
+        const response = await fetch("/catalog");
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.detail || "Failed to load catalog.");
+        list.innerHTML = data.items.map(item => `
+          <div class="catalog-item" onclick="selectProduct(${item.product_id})">
+            <div class="thumb">${renderArtwork(item.title, item.category, item.brand)}</div>
+            <div>
+              <div class="catalog-title">${item.title}</div>
+              <div class="catalog-sub"><span class="catalog-stars">${getStars(item.rating)}</span>${Number(item.rating).toFixed(1)} · $${Number(item.price).toFixed(2)}</div>
+            </div>
+          </div>
+        `).join("");
+      } catch (err) {
+        list.innerHTML = `<div class="catalog-item"><div class="catalog-sub">${err.message}</div></div>`;
+      }
+    }
+
+    async function runRecommendations() {
+      const productId = document.getElementById("productId").value.trim();
+      const topK = document.getElementById("topK").value;
+      setError(""); setLoading(true);
+      if (!productId) { setLoading(false); setError("Please enter a Product ID before requesting recommendations."); return; }
+      try {
+        const response = await fetch(`/recommend/product/${productId}?top_k=${topK}`);
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.detail || "Recommendation request failed.");
+        setQueryBox(`<strong>Query Product:</strong> ${data.query_product.title} &nbsp;·&nbsp; ${data.query_product.category} &nbsp;·&nbsp; ${data.query_product.brand} &nbsp;·&nbsp; $${Number(data.query_product.price).toFixed(2)}`);
+        renderGrid(data.recommendations, "Recommended Products");
+      } catch (err) {
+        setQueryBox(""); renderGrid([], "Recommended Products"); setError(err.message || "Something went wrong.");
+      } finally { setLoading(false); }
+    }
+
+    async function loadTrending() {
+      const topK = document.getElementById("topK").value;
+      setError(""); setLoading(true);
+      try {
+        const response = await fetch(`/recommend/trending?top_k=${topK}`);
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.detail || "Trending request failed.");
+        setQueryBox(`<strong>Trending Products</strong> ranked by popularity and interaction signals.`);
+        renderGrid(data.items, "Trending Products");
+      } catch (err) {
+        setQueryBox(""); renderGrid([], "Trending Products"); setError(err.message || "Something went wrong.");
+      } finally { setLoading(false); }
+    }
+
+    function handlePrimaryAction() {
+      const mode = document.getElementById("viewMode").value;
+      if (mode === "trending") loadTrending();
+      else runRecommendations();
+    }
+
+    loadCatalog();
+  </script>
+</body>
+</html>

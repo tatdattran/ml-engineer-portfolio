@@ -1,0 +1,17 @@
+product_id,title,category,brand,price,rating,num_reviews,description,features
+101,Wireless Noise Cancelling Headphones,Electronics,Sony,199.99,4.6,12450,Premium over-ear headphones with active noise cancellation and long battery life,bluetooth wireless noise-cancelling over-ear travel
+102,True Wireless Earbuds,Electronics,Samsung,129.99,4.4,9850,Compact earbuds with clear sound and secure fit for daily use,bluetooth earbuds portable fast-charging
+103,Mechanical Gaming Keyboard,Electronics,Logitech,149.99,4.5,5120,RGB mechanical keyboard designed for gaming and productivity,mechanical keyboard rgb gaming tactile
+104,4K Action Camera,Electronics,GoPro,249.99,4.3,4680,Portable action camera for outdoor recording and adventure video,4k camera waterproof outdoor sports
+105,Men Running Shoes,Sports,Nike,89.99,4.4,8421,Lightweight running shoes built for everyday training and comfort,running breathable lightweight men sports
+106,Women Training Shoes,Sports,Adidas,94.99,4.5,7310,Stable training shoes for gym workouts and cardio sessions,training fitness workout women lightweight
+107,Smart Fitness Watch,Sports,Garmin,229.99,4.6,6905,Advanced fitness watch with heart rate GPS and workout tracking,fitness smartwatch gps health running
+108,Insulated Water Bottle,Home,Hydro Flask,34.99,4.7,15800,Reusable insulated bottle that keeps drinks cold for hours,water bottle insulated reusable outdoor
+109,Air Fryer XL,Home,Philips,179.99,4.5,11890,Large capacity air fryer for healthier everyday cooking,air fryer kitchen cooking healthy appliance
+110,Robot Vacuum Cleaner,Home,iRobot,329.99,4.2,8430,Automatic vacuum cleaner with smart home navigation and app control,robot vacuum smart home cleaning
+111,Organic Face Moisturizer,Beauty,CeraVe,24.99,4.6,13400,Daily facial moisturizer with hydrating and skin barrier support,skincare moisturizer daily hydration beauty
+112,Vitamin C Serum,Beauty,La Roche-Posay,29.99,4.4,7622,Brightening face serum for smoother and healthier skin,serum vitamin-c skincare anti-aging
+113,Leather Office Backpack,Fashion,Samsonite,119.99,4.5,4330,Professional backpack for work travel and laptop carry,backpack office travel laptop leather
+114,Men Casual Jacket,Fashion,Levi's,79.99,4.3,5290,Comfortable casual jacket suitable for everyday wear,jacket casual men fashion outerwear
+115,Stainless Steel Cookware Set,Home,T-fal,159.99,4.4,4970,Multi-piece cookware set for daily family cooking,cookware stainless steel pots pans kitchen
+116,Portable Bluetooth Speaker,Electronics,JBL,99.99,4.6,14320,Portable speaker with strong bass and waterproof design,speaker bluetooth portable waterproof music
