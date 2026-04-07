@@ -67,3 +67,13 @@ Open `notebooks/churn_eda.ipynb` for dataset overview, missing values, churn dis
 * OneHotEncoding for categorical variables
 * Matplotlib & Seaborn for visualization
 * Jupyter Notebook for EDA
+
+# 👨‍💻 Author
+
+**Dr. Tat Dat Tran**
+
+GitHub: https://github.com/tatdattran
+
+---
+
+# ⭐ Star this repo if you find it useful!

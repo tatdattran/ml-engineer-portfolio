@@ -1,5 +1,8 @@
 # 🛍️ E-commerce Recommendation System
 
+
+## Goal
+
 <p align="center">
   <b>Production-style recommendation system inspired by modern online retail product discovery</b>
 </p>
@@ -16,7 +19,7 @@
 
 ## Overview
 
-This project is a **e-commerce recommendation system** built with **FastAPI**, **scikit-learn**, and a lightweight web UI.
+This project is an **e-commerce recommendation system** built with **FastAPI**, **scikit-learn**, and a lightweight web UI.
 
 It simulates a real-world recommendation workflow for an online retail platform by combining multiple recommendation signals:
 
@@ -336,8 +339,12 @@ ruff check .
 
 ---
 
-## Author
+# 👨‍💻 Author
 
-Dr. Tat Dat Tran
+**Dr. Tat Dat Tran**
 
 GitHub: https://github.com/tatdattran
+
+---
+
+# ⭐ Star this repo if you find it useful!

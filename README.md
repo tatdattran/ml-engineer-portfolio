@@ -40,12 +40,12 @@ Each project is designed as a **self-contained machine learning pipeline**.
 
 ## 1. House Price Prediction and Deploy on a web app.
 
+**Goals**
 
-**Models**
+An end-to-end machine learning project that predicts house prices using an **XGBoost model**, deployed as a web application.
 
-* XGBoost
 
-**Key Features**
+**✨ Key Features**
 
 * 🔍 Feature selection (reduced from 81 → 9 features)
 * 🤖 Model training using XGBoost
@@ -68,7 +68,7 @@ Each project is designed as a **self-contained machine learning pipeline**.
 
 Predict whether a telecom customer will churn.
 
-**Techniques**
+**✨ Key Features**
 
 * Feature engineering
 * Class imbalance handling
@@ -103,7 +103,7 @@ It simulates a real-world recommendation workflow for an online retail platform 
 
 It uses a realistic **Amazon-style product catalog** and interaction dataset.
 
-## This repository demonstrates:
+**✨ Key Features**
 
 - recommendation system fundamentals
 - multi-signal ranking design
@@ -114,6 +114,7 @@ It uses a realistic **Amazon-style product catalog** and interaction dataset.
 - clean project structure
 - demo UI design for explainability
 
+**📸 Demo UI**
 
 ![Demo UI](03_recommendation_system/assets/RecommendationSystem.png)
 
@@ -123,7 +124,7 @@ It uses a realistic **Amazon-style product catalog** and interaction dataset.
 
 ## 4. NLP Sentiment Analysis
 
-
+**Goal**
 This project provides a **REST API for sentiment analysis** using a pre-trained Transformer model.
 
 👉 It also includes a **lightweight web UI** for easy interaction and demo.
@@ -136,7 +137,7 @@ Perfect for:
 
 ---
 
-## ✨ Features
+**✨ Key Features**
 
 * ⚡ FastAPI backend
 * 🧠 Transformer-based sentiment analysis (Hugging Face)
@@ -148,7 +149,7 @@ Perfect for:
 
 ---
 
-### Demo UI:
+**📸 Demo UI**
 
 ![Demo UI](04_NLP_sentiment_analysis/assets/demo_ui_4.png)
 
@@ -156,13 +157,14 @@ Perfect for:
 
 ## 5. YOLO Object Detection API (FastAPI + YOLOv8)
 
+**Goal**
 A production-ready REST API for object detection using **YOLOv8 (Ultralytics)** and **FastAPI**.
 This project follows clean architecture principles and is fully containerized with Docker — suitable for development, deployment, and portfolio demonstration.
 
 ---
 
 
-### ✨ Features
+**✨ Key Features**
 
 * ⚡ FastAPI high-performance backend
 * 🎯 YOLOv8 object detection (Ultralytics)
@@ -175,7 +177,7 @@ This project follows clean architecture principles and is fully containerized wi
 * 🧱 Clean architecture (API / Services / Core / Schemas)
 
 
-### Demo UI:
+**📸 Demo UI**
 
 ![Demo UI](05_object_detection_yolo/assets/demo_ui_5_5.jpg)
 ---

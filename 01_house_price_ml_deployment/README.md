@@ -1,5 +1,7 @@
 # 🏠 House Price Prediction ML App
 
+**Goal**
+
 An end-to-end machine learning project that predicts house prices using an **XGBoost model**, deployed as a web application.
 
 ---
@@ -153,3 +155,14 @@ http://localhost:5000
 * **Algorithm:** XGBoost Regressor
 * **Features:** Top 9 most important features
 * **Evaluation Metric:** RMSE (Root Mean Squared Error)
+
+
+# 👨‍💻 Author
+
+**Dr. Tat Dat Tran**
+
+GitHub: https://github.com/tatdattran
+
+---
+
+# ⭐ Star this repo if you find it useful!

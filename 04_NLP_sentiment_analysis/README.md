@@ -1,5 +1,8 @@
 # 🚀 NLP Sentiment Analysis API (FastAPI + Transformers)
 
+
+## Goals
+
 <p align="center">
   <b>Production-ready Sentiment Analysis API with Interactive Demo UI</b>
 </p>
