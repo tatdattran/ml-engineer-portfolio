@@ -91,7 +91,7 @@ Predict whether a telecom customer will churn.
 
 **Goal**
 
-This project is a portfolio-ready **e-commerce recommendation system** built with **FastAPI**, **scikit-learn**, and a lightweight web UI.
+This project is an **e-commerce recommendation system** built with **FastAPI**, **scikit-learn**, and a lightweight web UI.
 
 It simulates a real-world recommendation workflow for an online retail platform by combining multiple recommendation signals:
 
@@ -101,7 +101,7 @@ It simulates a real-world recommendation workflow for an online retail platform 
 - popularity score
 - collaborative-style co-occurrence from user interactions
 
-Instead of a toy movie demo, this version uses a more realistic **Amazon-style product catalog** and interaction dataset.
+It uses a realistic **Amazon-style product catalog** and interaction dataset.
 
 ## This repository demonstrates:
 
