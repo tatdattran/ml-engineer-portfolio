@@ -1,6 +1,6 @@
 # Machine Learning Engineer Portfolio
 
-This repository contains **6 end-to-end Machine Learning projects** covering classical machine learning, deep learning, natural language processing, computer vision, recommendation systems, and model deployment.
+This repository contains **5 end-to-end Machine Learning projects** covering classical machine learning, deep learning, natural language processing, computer vision, recommendation systems, and model deployment.
 
 The goal of this portfolio is to demonstrate practical skills required for a **Machine Learning Engineer role**, including:
 
@@ -29,7 +29,7 @@ ml-engineer-portfolio
    ├─ 03_recommendation_system
    ├─ 04_nlp_sentiment_analysis
    ├─ 05_object_detection_yolo
-   └─ 06_ml_api_deployment
+
 ```
 
 Each project is designed as a **self-contained machine learning pipeline**.
@@ -180,23 +180,5 @@ This project follows clean architecture principles and is fully containerized wi
 ![Demo UI](05_object_detection_yolo/assets/demo_ui_5_5.jpg)
 ---
 
-## 6. ML API Deployment
-
-**Goal**
-
-Deploy a trained machine learning model as an API.
-
-**Tools**
-
-* FastAPI
-* Uvicorn
-
-**Features**
-
-* REST API for predictions
-* JSON input/output
-* Model loading
-
----
 
 
