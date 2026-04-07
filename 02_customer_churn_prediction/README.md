@@ -9,6 +9,7 @@ Dataset contains customer information such as tenure, monthly charges, contract 
 Target variable: `Churn`.
 
 ## Project Structure
+```text
 02_customer_churn_prediction/
 ├─ data/
 │ └─ telco_churn.csv
@@ -21,7 +22,7 @@ Target variable: `Churn`.
 │ ├─ RandomForest.pkl
 │ └─ LogisticRegression.pkl
 └─ README.md
-
+```
 
 ## Machine Learning Pipeline
 1. Data cleaning (convert TotalCharges to numeric, handle missing values)
